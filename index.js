@@ -53,6 +53,7 @@ app.get('*', (req, res) => {
 
   try {
     var j = JSON.parse(txjson.toString())
+    j.vout[0].spent = !nexttxjson
     res.setHeader('Content-Type', contentType)
     if (contentType === 'application/json') {
       res.send(j)
