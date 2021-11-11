@@ -16,6 +16,7 @@ render(html`
 <h1>Tx ${di.data.txid}</h1>
 <pre>${JSON.stringify(di.data, null, 2)}</pre>
 
-<a href="${di.data.vin[0].txid}">prev</a>
+<a href="${di.data.vin[0].txid}">prev</a><br/>
+<a href="${di.data.txid}.json">json</a><br/>
 `, document.body)
 
