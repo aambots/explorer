@@ -1,0 +1,25 @@
+{
+  "name": "@aambots/explorer",
+  "version": "0.0.1",
+  "description": "explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aambots/explorer.git"
+  },
+  "author": "Melvin Carvalho <melvincarvalho@gmail.com> (https://melvincarvalho.com/#me)",
+  "bugs": {
+    "url": "https://github.com/aambots/explorer/issues"
+  },
+  "homepage": "https://github.com/aambots/explorer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "skill-express": "^0.0.1"
+  }
+}
