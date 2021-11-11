@@ -22,30 +22,55 @@ function parsePath(path) {
   return ret
 }
 
+app.use('/css', express.static('css'))
+app.use('/js', express.static('js'))
+
 app.get('*', (req, res) => {
 
   const path = req.path
-  const contentType = mime.lookup(path) || 'application/json'
+  const contentType = mime.lookup(path) || 'text/html'
   console.log(contentType)
 
   let tx = parsePath(path)
   console.log(tx)
 
 
-  let cmd = './bin/gettx.sh ' + tx
+  let gettxcmd = './bin/gettx.sh ' + tx
+  console.log('gettxcmd', gettxcmd)
+  let txjson = execSync(gettxcmd)
+  console.log('txjson', txjson.toString())
 
-  console.log('cmd', cmd)
-
-  let json = execSync(cmd)
-  console.log('json', json.toString())
+  let nexttxcmd = './bin/nexttx.sh ' + tx
+  console.log('nexttxcmd', nexttxcmd)
+  var nexttxjson = execSync(nexttxcmd)
+  console.log('nexttxjson', nexttxjson.toString())
 
   try {
-    var j = JSON.parse(json.toString())
+    nexttxjson = JSON.parse(nexttxjson)
+  } catch {
+    nexttxjson = null
+  }
+
+  try {
+    var j = JSON.parse(txjson.toString())
     res.setHeader('Content-Type', contentType)
     if (contentType === 'application/json') {
       res.send(j)
     } else if (contentType === 'text/html') {
-      res.send(`<pre>${JSON.stringify(j, null, 2)}</pre>`)
+      var body = `
+      <html>
+      <head>
+        <link rel="stylesheet" href="./css/spux.css" />
+        <script type="application/json" id="data">
+        ${JSON.stringify(j, null, 2)}
+        </script>
+        <script type="module" src="./js/app.js"></script>
+      </head>
+      <body>`
+
+      body += `</body></html>`
+
+      res.send(body)
     }
   } catch (e) {
     res.setHeader('Content-Type', 'text/html')
