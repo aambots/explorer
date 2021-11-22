@@ -56,8 +56,8 @@ Hash: ${d.blockhash}${'\n'}
 Search
 
 <pre>
-<a target="_blank" href="https://github.com/search?q=${d.txid}&type=code">Github</a>${'\n'}
-<a target="_blank" href="https://chainz.cryptoid.info/marks/tx.dws?${d.txid}.htm">Cryptoid</a>
+<a style="color:blue" target="_blank" href="https://github.com/search?q=${d.txid}&type=code">Github</a>${'\n'}
+<a style="color:blue" target="_blank" href="https://chainz.cryptoid.info/marks/tx.dws?${d.txid}.htm">Cryptoid</a>
 </pre>
 
 <footer>
