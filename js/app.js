@@ -52,6 +52,14 @@ Conf: ${d.confirmations}${'\n'}
 Hash: ${d.blockhash}${'\n'}
 </pre>
 
+
+Search
+
+<pre>
+<a target="_blank" href="https://github.com/search?q=${d.txid}&type=code">Github</a>${'\n'}
+<a target="_blank" href="https://chainz.cryptoid.info/marks/tx.dws?${d.txid}.htm">Cryptoid</a>
+</pre>
+
 <footer>
 © 2021 gitmark.info | <a style="color:blue" target="_blank" href="${di.data.txid}.json">JSON</a> | Genesis | <i><a style="color:blue" target="_blank" href="https://gitmark.info/${genesis.toString().split(':')[1]}">${genesis.toString()}</a></i>
 </footer>
