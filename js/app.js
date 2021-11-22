@@ -47,7 +47,7 @@ ${d.vin.map((i, j) => {
 
 Block
 <pre>
-Date: ${new Date(d.time * 1000).toLocaleDateString("en-US")}${'\n'}
+Date: ${new Date(d.time * 1000).toLocaleDateString("en-GB")}${'\n'}
 Conf: ${d.confirmations}${'\n'}
 Hash: ${d.blockhash}${'\n'}
 </pre>
