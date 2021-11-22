@@ -38,7 +38,7 @@ ${d.vin.map((i, j) => {
     return html`<pre>Coinbase: ${i.coinbase}
     </pre>`
   } else {
-    return html`<pre>Txn: <a href=${i.txid}>${i.txid}:${i.vout}</a> 
+    return html`<pre>Txn: <a style="color:blue" href=${i.txid}>${i.txid}:${i.vout}</a> 
     ${'\n'}
     Hex: ${i.scriptSig?.hex}
     </pre>`
@@ -47,7 +47,7 @@ ${d.vin.map((i, j) => {
 
 
 <footer>
-© 2021 gitmark.info | <a target="_blank" href="${di.data.txid}.json">JSON</a> | Genesis | <i><a style="color:blue" target="_blank" href="https://gitmark.info/${genesis.toString().split(':')[1]}">${genesis.toString()}</a></i>
+© 2021 gitmark.info | <a style="color:blue" target="_blank" href="${di.data.txid}.json">JSON</a> | Genesis | <i><a style="color:blue" target="_blank" href="https://gitmark.info/${genesis.toString().split(':')[1]}">${genesis.toString()}</a></i>
 </footer>
 
 `, document.body)
