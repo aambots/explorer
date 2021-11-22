@@ -5,6 +5,8 @@ console.log(99)
 
 console.log(di.data)
 
+var genesis = 'gitmark:e337e87fdf8e8b3adce14408b1d44e4c3628ac0e6b9ab7ce67498694e378010f:0'
+
 // di.data.txid = `<a href="${di.data.txid}">${di.data.txid}</a>`
 
 render(html`
@@ -44,9 +46,11 @@ ${d.vin.map((i, j) => {
 })}
 
 
+<footer>
+© 2021 gitmark.info | <a target="_blank" href="${di.data.txid}.json">JSON</a> | Genesis | <i><a style="color:blue" target="_blank" href="https://gitmark.info/${genesis.toString().split(':')[1]}">${genesis.toString()}</a></i>
+</footer>
 
-
-<br/>
-<a href="${di.data.txid}.json">json</a> <br/>
 `, document.body)
+
+
 
