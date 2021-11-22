@@ -23,7 +23,7 @@ render(html`
 <h1>Tx ${di.data.txid}</h1>
 
 Outputs
-${d.vout.map(i => html`<pre>Address: ${i.scriptPubKey?.addresses[0]} 
+${d.vout.map((i, j) => html`<pre>${'Vout: ' + j + '\n'}Address: ${i.scriptPubKey?.addresses[0]} 
 ${'\n'}
 Amount: ${i.value}
 ${'\n'}
@@ -31,20 +31,22 @@ Pub Key: ${i.scriptPubKey?.hex}
 </pre>`)}
 
 Inputs
-${d.vin.map(i => html`<pre>Txn: <a href=${i.txid}>${i.txid}:${i.vout}</a> 
-${'\n'}
-Hex: ${i.scriptSig?.hex}
-</pre>`)}
+${d.vin.map((i, j) => {
+  if (i.coinbase) {
+    return html`<pre>Coinbase: ${i.coinbase}
+    </pre>`
+  } else {
+    return html`<pre>Txn: <a href=${i.txid}>${i.txid}:${i.vout}</a> 
+    ${'\n'}
+    Hex: ${i.scriptSig?.hex}
+    </pre>`
+  }
+})}
 
-Raw Data
-
-<pre> ${JSON.stringify(d.vin, null, 2)}</pre>
-
-<pre>${JSON.stringify(d.vout, null, 2)}</pre>
 
 
 
-<a href="${di.data.vin[0].txid}">prev</a><br/>
-<a href="${di.data.txid}.json">json</a><br/>
+<br/>
+<a href="${di.data.txid}.json">json</a> <br/>
 `, document.body)
 
