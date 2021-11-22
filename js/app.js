@@ -45,6 +45,12 @@ ${d.vin.map((i, j) => {
   }
 })}
 
+Block
+<pre>
+Date: ${new Date(d.time * 1000).toLocaleDateString("en-US")}${'\n'}
+Conf: ${d.confirmations}${'\n'}
+Hash: ${d.blockhash}${'\n'}
+</pre>
 
 <footer>
 © 2021 gitmark.info | <a style="color:blue" target="_blank" href="${di.data.txid}.json">JSON</a> | Genesis | <i><a style="color:blue" target="_blank" href="https://gitmark.info/${genesis.toString().split(':')[1]}">${genesis.toString()}</a></i>
